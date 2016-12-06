@@ -63,10 +63,13 @@ function example(name){
 	}else if(name='patty_and_winston'){
 		if(view){
 			html_str+='<h2>Patty and Winston</h2>';
-			html_str+='<canvas id="viewport"></canvas>';
 			html_str+='<div class="buttons">';
 				html_str+='<img src="img/patty_forward.png">';
+				html_str+='<img src="img/patty_right.png">';
+			html_str+='</div>';
+			html_str+='<div class="buttons">';
 				html_str+='<img src="img/winston_forward.png">';
+				html_str+='<img src="img/winston_right.png">';
 			html_str+='</div>';
 
 			view.innerHTML=html_str;
@@ -82,11 +85,7 @@ function example(name){
 		events(name);
 	}
 }
-function example_change(e){
-	var name=e.srcElement.value;
-	events(name,false);
-	example(name);
-}
+function example_change(e){var name=e.srcElement.value;events(name,false);example(name);}
 
 /* ========================================================= Zig Zag - setting changes ===== */
 function events(type,create){
