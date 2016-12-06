@@ -58,6 +58,7 @@ function example(name){
 
 		}
 		events(name);
+		sdlfjs
 	
 	/*-----------------------------------------paddy_and_winston example*/
 	}else if(name='patty_and_winston'){
