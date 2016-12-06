@@ -1,0 +1,108 @@
+<html>
+
+<!-- Head _________________________________________________ -->
+	<head>
+		
+		<!-- webpage title browser displays this  -->
+		<title>Viewport</title>
+		
+		<!-- settings for the image_look functions -->
+		<script type="text/javascript">
+
+			/*create the variable for the canvas handler 'viewport'*/
+			var vp=null,
+			example_list=[
+				'zigzag',
+				'patty_and_winston'
+			],
+			settings={
+				'view':'zigzag',
+				// 'view':'zigzag',
+				'canvas':'viewport', /*id of the canvas element*/
+				'dimensions':{ /*the canvas width and height*/
+					'width':200,
+					'height':200
+				},
+				'colors':{ /*background and line color*/
+					'bg':'white',
+					'line':'black',
+				},
+				'zigzag':{ /* zig zag loop drawing zigzags over time */
+					'autostart':true,/*start automatic zig zag on load*/
+					'delay':125, /*how much time between zig zag draws*/
+					'size':10, /*the size of the zig zag*/
+					'loop':1 /*how many zigzags to draw at a time*/
+				}
+			};
+		
+		</script>
+
+		<!-- viewport setting for proper mobile device scaling -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
+
+	</head>
+
+<!-- Body _________________________________________________ -->
+	<body>
+
+		<!-- heading tag -->
+		<h1>Viewport</h1>
+
+		<!-- example container -->
+		<div id="example"></div>
+
+		<hr>
+
+		<!-- settings form -->
+		<form id="settings" class="settings closed">
+
+			<!-- list of form elements for adding scrolling -->
+			<div class="list">
+
+				<!-- settings for the example -->
+				<div id="example_settings"></div>
+
+				<!-- settings for the example -->
+				<div id="example_list"></div>
+
+				<!-- setting action buttons -->
+				<div class="buttons">
+					<button id="settings_close" class="close">Close</button>
+					<button id="settings_color">Theme - B&amp;W</button>
+					<button id="settings_modal" class="modal">Fullscreen</button>
+				</div>
+
+			<!-- closing #settings .list -->
+			</div>
+
+		<!-- closing form#settings -->
+		</form>
+
+		<hr>
+
+		<!-- current example buttons -->
+		<div class="buttons">
+			<!-- open settings menu -->
+			<button id="settings_toggle"class="toggle">Settings</button>
+			<!-- clear canvas and reset the stroke start position -->
+			<button id="il_clear"class="">Clear</button>
+		</div>
+
+	<!-- closing the body element -->
+	</body>
+
+<!-- JavaScript ___________________________________________ -->
+	<!-- these are functions for binding events and changing class names on elements -->
+	<script type="text/javascript" src="fnc.js"></script>
+	<!-- these are the events bound to the html elements -->
+	<script type="text/javascript" src="evt.js"></script>
+	<!-- this is the image_look prototype -->
+	<script type="text/javascript" src="viewport.js"></script>
+	<!-- this is what loads the html of the examples -->
+	<script type="text/javascript" src="examples.js"></script>
+
+<!-- CSS __________________________________________________ -->
+	<!-- the styles to make all the elements work and look aesthetically pleasing -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+</html>
