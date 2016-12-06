@@ -1,15 +1,19 @@
+/* ========================================= Custom Styles ================ */
+/* example list in settings ------------------------------------------------*/
+div#example_list {padding: 10px 0;}
+
 /* ========================================= Responsive Styles ============ */
 /* responsive styles -------------------------------------------------------*/
 @media (max-width:767px){
-	body .settings{width:100%;}
-	body .settings.modal{width:96%;}
-	body .settings.closed{width:100%;left:105%}
-	body .settings .list{overflow-y:scroll;height:100%;}
+    body .settings{width:100%;}
+    body .settings.modal{width:96%;}
+    body .settings.closed{width:100%;left:105%}
+    body .settings .list{overflow-y:scroll;height:100%;}
 }
 @media (max-width:500px){
-	body .buttons button{width:100%;border-radius:15px;margin-bottom:5px;}
-	body canvas{max-height:100%;width:80%;}
-	body .settings.modal{height:94%;}
+    body .buttons button{width:100%;border-radius:15px;margin-bottom:5px;}
+    body canvas{max-height:100%;width:80%;}
+    body .settings.modal{height:94%;}
 }
 
 /* ========================================== General Styles ============== */
@@ -80,15 +84,15 @@ canvas {
 }
 .settings {
     position: fixed;
-	left:0%;
+    left:0%;
     bottom: 0;
-	width:50%;
-	height:50%;
-	-webkit-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
-	-moz-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
-	-ms-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
-	-o-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
-	transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
+    width:50%;
+    height:50%;
+    -webkit-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
+    -moz-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
+    -ms-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
+    -o-transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
+    transition:left 1s,width 1s,height 1s,bottom 1s,padding 1s,border-radius 1s;
     border-radius: 0 10px 0 0;
     padding: 5px 0;
 }
@@ -96,7 +100,6 @@ canvas {
 .settings.modal{left:2%;bottom:2%;width:96%;height:94%;border-radius:20px;}
 .settings.modal .input{margin:1rem 2%;width:96%;padding:1rem 0;}
 .settings.modal.closed{left:-105%;}
-
 
 /* ============================================ Form Input Styles ========= */
 /*form element styling -----------------------------------------------------*/
