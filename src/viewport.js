@@ -1,13 +1,13 @@
 function viewport(canvas) {
-	this.canvas=document.getElementById(canvas),
-	this.ctx = this.canvas.getContext("2d");
+	this.canvas=document.getElementById(canvas);
+	if(this.canvas)this.ctx = this.canvas.getContext("2d");
 	this.pos ={'x':0,'y':0};
 	this.bg='red';
 	this.line='green';
 	this.loop=null;
 }
 viewport.prototype.setup=function(dim){
-	console.log(dim);
+	if(!this.ctx)return;
 	this.ctx.canvas.width=dim.width;
 	this.ctx.canvas.height=dim.height;
 	this.ctx.moveTo(this.pos.x,this.pos.y);
