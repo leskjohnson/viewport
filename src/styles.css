@@ -2,6 +2,20 @@
 /* example list in settings ------------------------------------------------*/
 div#example_list {padding: 10px 0;}
 
+#scene canvas{
+    position: relative;
+    top:0;left:0;
+    width:25%;
+    height:25%;
+    -webkit-transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
+    -moz-transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
+    -ms-transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
+    -o-transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
+    transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
+}
+body.fullscreen #scene canvas
+    {width:100% !important;height:100% !important;position:absolute;top:0;left:0;margin:0;z-index:1;
+}
 /* ========================================= Responsive Styles ============ */
 /* responsive styles -------------------------------------------------------*/
 @media (max-width:767px){

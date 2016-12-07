@@ -34,6 +34,10 @@ function scene_init(){
 		settings.view='patty_and_winston';
 		settings.dimensions.width=500;
 		settings.dimensions.height=200;
+
+		if(typeof patty_and_winston == 'function')
+			patty_and_winston_start();
+
 	}
 
 	vp.setup(settings.dimensions);
@@ -201,6 +205,10 @@ function events(type,create){
 			event_remove(document.getElementById('il_zig_zig_auto'),'click',zigzag_auto);
 			zigzagloopclear();
 		}		
+	}else if(type=='Patty-and-Winston-Jump'){
+		if(!create){
+			players_destroy();
+		}
 	}
 }
 

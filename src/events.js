@@ -1,7 +1,6 @@
 /* ========================================================= Window Loaded Event =========== */
 /* event for when the window loads --------------------------------------------------------- */
 event_add(window,'load',function(e){
-
 	/* find the scene_list element */
 	var ele=document.getElementById('scene_list');
 	/*fill the scene_list with a select dropdown of the scenes */
@@ -10,8 +9,16 @@ event_add(window,'load',function(e){
 	/*load in the html and events*/
 	scene_load(settings.scene);
 	scene_init();
-
 });		
+
+/* ========================================================= Keydown Events ================ */
+/* event for sliding out the settings ------------------------------------------------------ */
+event_add(document,'keydown',function(e){
+	if(e.code=='Space'){
+		if(e.shiftKey)class_toggle(document.body,'fullscreen');
+		else class_toggle(document.getElementById('settings'),'closed');
+	}
+});
 
 /* ========================================================= Modal Actions and Settings ==== */
 /* event for sliding out the settings ------------------------------------------------------ */
@@ -60,3 +67,20 @@ event_add(document.getElementById('il_clear'),'click',function(e){
 	vp.pos.x=0;
 	vp.pos.y=0;
 });
+
+/* ========================================================= Scene Loop ==================== */
+/* scene recurring event ------------------------------------------------------------------- */
+/*function sceneloop() {
+    vp.loop=window.setTimeout(function(){
+		vp.zigzag(
+			settings.zigzag.size,
+			settings.zigzag.loop
+		);
+        zigzagloop(settings.zigzag.delay);
+    }, settings.zigzag.delay);
+}*/
+/* destroy sceneloop ------------------------------------------------------------------------ */
+/*function sceneloopclear(){
+	window.clearTimeout(vp.loop);
+	vp.loop=null;
+}*/
