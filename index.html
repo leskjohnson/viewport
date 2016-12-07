@@ -11,13 +11,14 @@
 
 			/*create the variable for the canvas handler 'viewport'*/
 			var vp=null,
-			example_list=[
+			/*create the list of scenes to switch between*/
+			scene_list=[
 				'zigzag',
-				'patty_and_winston'
+				'Patty-and-Winston-Jump'
 			],
 			settings={
-				'view':'zigzag',
-				// 'view':'zigzag',
+				'scene':'zigzag', /*the scene to start with*/
+				'view':'zigzag', /*what to fill the 'vp' with*/
 				'canvas':'viewport', /*id of the canvas element*/
 				'dimensions':{ /*the canvas width and height*/
 					'width':200,
@@ -32,6 +33,10 @@
 					'delay':125, /*how much time between zig zag draws*/
 					'size':10, /*the size of the zig zag*/
 					'loop':1 /*how many zigzags to draw at a time*/
+				},
+				'patty_and_winston':{
+					'patty':0,
+					'winston':0
 				}
 			};
 		
@@ -45,13 +50,16 @@
 <!-- Body _________________________________________________ -->
 	<body>
 
-		<!-- heading tag -->
-		<h1>Viewport</h1>
-
 		<!-- example container -->
-		<div id="example"></div>
+		<div id="scene"></div>
 
-		<hr>
+		<!-- current example buttons -->
+		<div class="buttons">
+			<!-- open settings menu -->
+			<button id="settings_toggle"class="toggle">Settings</button>
+			<!-- clear canvas and reset the stroke start position -->
+			<button id="il_clear"class="">Clear</button>
+		</div>
 
 		<!-- settings form -->
 		<form id="settings" class="settings closed">
@@ -60,10 +68,10 @@
 			<div class="list">
 
 				<!-- settings for the example -->
-				<div id="example_list" class="input"></div>
+				<div id="scene_list" class="input"></div>
 
 				<!-- settings for the example -->
-				<div id="example_settings"></div>
+				<div id="scene_settings"></div>
 
 				<!-- setting action buttons -->
 				<div class="buttons">
@@ -78,28 +86,24 @@
 		<!-- closing form#settings -->
 		</form>
 
-		<hr>
-
-		<!-- current example buttons -->
-		<div class="buttons">
-			<!-- open settings menu -->
-			<button id="settings_toggle"class="toggle">Settings</button>
-			<!-- clear canvas and reset the stroke start position -->
-			<button id="il_clear"class="">Clear</button>
-		</div>
-
 	<!-- closing the body element -->
 	</body>
 
 <!-- JavaScript ___________________________________________ -->
+	
+
 	<!-- these are functions for binding events and changing class names on elements -->
-	<script type="text/javascript" src="src/fnc.js"></script>
+	<script type="text/javascript" src="src/functions.js"></script>
 	<!-- these are the events bound to the html elements -->
-	<script type="text/javascript" src="src/evt.js"></script>
+	<script type="text/javascript" src="src/events.js"></script>
 	<!-- this is the image_look prototype -->
 	<script type="text/javascript" src="src/viewport.js"></script>
-	<!-- this is what loads the html of the examples -->
-	<script type="text/javascript" src="src/examples.js"></script>
+	<!-- this is what loads the html of the scenes -->
+	<script type="text/javascript" src="src/scenes.js"></script>
+
+	<script type="text/javascript" src="src/requestNextAnimationFrame.js"></script>
+	<!-- patty and winston - insercorp game -->
+	<script type="text/javascript" src="src/patty_and_winston.js"></script>
 
 <!-- CSS __________________________________________________ -->
 	<!-- the styles to make all the elements work and look aesthetically pleasing -->

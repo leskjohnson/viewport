@@ -1,44 +1,24 @@
 /* ========================================================= Window Loaded Event =========== */
 /* event for when the window loads --------------------------------------------------------- */
 event_add(window,'load',function(e){
+	/* find the scene_list element */
+	var ele=document.getElementById('scene_list');
+	/*fill the scene_list with a select dropdown of the scenes */
+	if(ele)scene_select(ele);
 
-	// this is what setups up the example
-	example(settings.view);
-
-	setTimeout(function(){
-
-		/* create the image_look prototype */	
-		vp=new viewport(settings.canvas) 
-		/* setup the colors */
-		vp.bg=settings.colors.bg;
-		vp.line=settings.colors.line;
-		/* setup the canvas width and height */
-		vp.setup(settings.dimensions);
-
-		var ele=document.getElementById('example_list');
-		if(ele){
-			var html_str='<select id="example_select" name="example">';
-			for (var i = 0; i < example_list.length; i++)
-				html_str+='<option value="'+example_list[i]+'">'+example_list[i]+'</option>';
-			html_str+='</select>';
-			ele.innerHTML=html_str;
-			setTimeout(function(){
-				event_add(document.getElementById('example_select'),'input',example_change);
-			},1);
-		}
-
-
-		if(settings.view=='zigzag'){
-			/* if zigzag auto start is on start the zigzagloop */
-			if(settings.zigzag.autostart){
-				zigzagloop();
-				class_add(document.getElementById('il_zig_zig_auto'),'active');
-			}		
-		}
-	},1);
-
+	/*load in the html and events*/
+	scene_load(settings.scene);
+	scene_init();
 });		
-	
+
+/* ========================================================= Keydown Events ================ */
+/* event for sliding out the settings ------------------------------------------------------ */
+event_add(document,'keydown',function(e){
+	if(e.code=='Space'){
+		if(e.shiftKey)class_toggle(document.body,'fullscreen');
+		else class_toggle(document.getElementById('settings'),'closed');
+	}
+});
 
 /* ========================================================= Modal Actions and Settings ==== */
 /* event for sliding out the settings ------------------------------------------------------ */
@@ -87,3 +67,20 @@ event_add(document.getElementById('il_clear'),'click',function(e){
 	vp.pos.x=0;
 	vp.pos.y=0;
 });
+
+/* ========================================================= Scene Loop ==================== */
+/* scene recurring event ------------------------------------------------------------------- */
+/*function sceneloop() {
+    vp.loop=window.setTimeout(function(){
+		vp.zigzag(
+			settings.zigzag.size,
+			settings.zigzag.loop
+		);
+        zigzagloop(settings.zigzag.delay);
+    }, settings.zigzag.delay);
+}*/
+/* destroy sceneloop ------------------------------------------------------------------------ */
+/*function sceneloopclear(){
+	window.clearTimeout(vp.loop);
+	vp.loop=null;
+}*/
