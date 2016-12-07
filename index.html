@@ -50,13 +50,16 @@
 <!-- Body _________________________________________________ -->
 	<body>
 
-		<!-- heading tag -->
-		<h1>Viewport</h1>
-
 		<!-- example container -->
 		<div id="scene"></div>
 
-		<hr>
+		<!-- current example buttons -->
+		<div class="buttons">
+			<!-- open settings menu -->
+			<button id="settings_toggle"class="toggle">Settings</button>
+			<!-- clear canvas and reset the stroke start position -->
+			<button id="il_clear"class="">Clear</button>
+		</div>
 
 		<!-- settings form -->
 		<form id="settings" class="settings closed">
@@ -82,16 +85,6 @@
 
 		<!-- closing form#settings -->
 		</form>
-
-		<hr>
-
-		<!-- current example buttons -->
-		<div class="buttons">
-			<!-- open settings menu -->
-			<button id="settings_toggle"class="toggle">Settings</button>
-			<!-- clear canvas and reset the stroke start position -->
-			<button id="il_clear"class="">Clear</button>
-		</div>
 
 	<!-- closing the body element -->
 	</body>

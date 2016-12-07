@@ -2,7 +2,8 @@
 /* ----------------------------------------------------------------------------------------- */
 function scene_select(ele){
 	/* create the select input */
-	var html_str='<select id="scene_select" name="scene">';
+	var html_str='<label for="scene_select">Scene Select</label>';
+	html_str+='<select id="scene_select" name="scene">';
 	/* create an html option for each scene in the scene_list */
 	for (var i = 0; i < scene_list.length; i++)
 		html_str+='<option value="'+scene_list[i]+'">'+scene_list[i]+'</option>';
@@ -82,7 +83,7 @@ function scene_load(name){
 	if(name=='zigzag'){
 		/* this is the main page html */
 		if(view){
-			html_str+='<h2>Zig Zag</h2>';
+			html_str+='<h1>Zig Zag</h1>';
 			html_str+='<canvas id="viewport"></canvas>';
 			view.innerHTML=html_str;
 		}
@@ -136,13 +137,16 @@ function scene_load(name){
 	/*-----------------------------------------Patty and Winston Jump example*/
 	}else if(name=='Patty-and-Winston-Jump'){
 		if(view){
-			html_str+='<h2>Patty and Winston</h2>';
-			html_str+='<h3>Jump</h3>';
+			html_str+='<h1><img src="img/winston_and_patty_logo.png" alt="Patty and Winston" title="Patty and Winston" /></h1>';
 			html_str+='<canvas id="viewport"></canvas>';
 			html_str+='<div class="buttons">';
 				html_str+='<img src="img/winston_forward.png">';
 				html_str+='<img src="img/patty_forward.png">';
 			html_str+='</div>';
+			html_str+='<style>';
+			html_str+='body{background-color:#70a52a;}';
+			html_str+='body #scene h1{background-color:#ff1d1d;}';
+			html_str+='</style>';
 
 			view.innerHTML=html_str;
 		}
