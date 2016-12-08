@@ -210,8 +210,11 @@ function events(type,create){
 			zigzagloopclear();
 		}		
 	}else if(type=='Patty-and-Winston-Jump'){
-		if(!create){
-			players_destroy();
+		if(create){
+			event_add(window,'keydown',patty_and_winston_key);
+		}else{
+			event_remove(window,'keydown',patty_and_winston_key);
+			characters_destroy();
 		}
 	}
 }

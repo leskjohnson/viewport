@@ -1,6 +1,7 @@
 function viewport(canvas) {
 	this.canvas=document.getElementById(canvas);
 	if(this.canvas)this.ctx = this.canvas.getContext("2d");
+	this.size={'x':0,'y':0};
 	this.pos={'x':0,'y':0};
 	this.fps={
       	ele: null,
@@ -14,6 +15,8 @@ function viewport(canvas) {
 }
 viewport.prototype.setup=function(dim){
 	if(!this.ctx)return;
+	this.size.x=dim.width;
+	this.size.y=dim.height;
 	this.ctx.canvas.width=dim.width;
 	this.ctx.canvas.height=dim.height;
 	this.ctx.canvas.style.width=dim.width+'px';
