@@ -28,7 +28,7 @@ body.fullscreen #scene canvas{width:100% !important;height:100% !important;posit
 @media (max-width:767px){
     body .settings{width:100%;}
     body .settings.modal{width:96%;}
-    body .settings.closed{width:100%;left:105%}    
+    body .settings.closed{width:100%;left:-110%}
 }
 @media (max-width:500px){
     body .buttons button{width:100%;border-radius:15px;margin-bottom:5px;}
