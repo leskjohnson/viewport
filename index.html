@@ -54,10 +54,16 @@
 	
 			<!-- action buttons -->
 			<div class="buttons">
-				<!-- open settings menu -->
-				<button id="settings_toggle"class="toggle">Settings</button>
 				<!-- clear canvas and reset the stroke start position -->
-				<button id="il_clear"class="">Clear</button>
+				<button id="reset_button" class="icon" title="Reset the Viewport">
+					<div class="reset"></div>
+					<span>Clear</span>
+				</button>
+				<!-- open settings menu -->
+				<button id="settings_button" class="toggle icon" title="Settings Menu">
+					<div class="gear"></div>
+					<span>Settings</span>
+				</button>
 			</div>
 		</div>
 
@@ -68,14 +74,43 @@
 		<form id="settings" class="settings closed">
 			<!-- list of form elements for adding scrolling -->
 			<div class="list">
-				<!-- settings for the example -->
-				<div id="scene_settings"></div>
 				<!-- setting action buttons -->
 				<div class="buttons">
 					<button id="settings_close" class="close">Close</button>
 					<button id="settings_color">Theme - B&amp;W</button>
 					<button id="settings_modal" class="modal">Fullscreen</button>
 				</div>
+
+				<h2>Viewport</h2>
+				<div class="input">
+					<label for="settings_bg">Background Color</label>
+					<select id="settings_bg" name="settings_bg">
+						<option value="white">White</option>
+						<option value="black">Black</option>
+						<option value="red">Red</option>
+						<option value="green">Green</option>
+						<option value="blue">Blue</option>
+						<option value="purple">Purple</option>
+						<option value="pink">Pink</option>
+						<option value="yellow">Yellow</option>
+					</select>
+				</div>
+				<div class="input">
+					<label for="settings_line">Line Color</label>
+					<select id="settings_line" name="settings_line">
+						<option value="black">Black</option>
+						<option value="white">White</option>
+						<option value="red">Red</option>
+						<option value="green">Green</option>
+						<option value="blue">Blue</option>
+						<option value="purple">Purple</option>
+						<option value="pink">Pink</option>
+						<option value="yellow">Yellow</option>
+					</select>
+				</div>
+
+				<!-- settings for the example -->
+				<div id="scene_settings"></div>
 			<!-- closing #settings .list -->
 			</div>
 		<!-- closing form#settings -->

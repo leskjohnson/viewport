@@ -104,31 +104,10 @@ function scene_load(name){
 		/* this is the slideout settings container html */ 
 		if(sett){
 			html_str=' ';
-			html_str+='<div class="input">';
-				html_str+='<label for="zigzag_size">Background Color</label>';
-				html_str+='<select id="zigzag_bg" name="zigzag_bg">';
-					html_str+='<option value="white">White</option>';
-					html_str+='<option value="black">Black</option>';
-					html_str+='<option value="red">Red</option>';
-					html_str+='<option value="green">Green</option>';
-					html_str+='<option value="blue">Blue</option>';
-					html_str+='<option value="purple">Purple</option>';
-					html_str+='<option value="pink">Pink</option>';
-					html_str+='<option value="yellow">Yellow</option>';
-				html_str+='</select>';
-			html_str+='</div>';
-			html_str+='<div class="input">';
-				html_str+='<label for="zigzag_line">Line Color</label>';
-				html_str+='<select id="zigzag_line" name="zigzag_line">';
-					html_str+='<option value="black">Black</option>';
-					html_str+='<option value="white">White</option>';
-					html_str+='<option value="red">Red</option>';
-					html_str+='<option value="green">Green</option>';
-					html_str+='<option value="blue">Blue</option>';
-					html_str+='<option value="purple">Purple</option>';
-					html_str+='<option value="pink">Pink</option>';
-					html_str+='<option value="yellow">Yellow</option>';
-				html_str+='</select>';
+			html_str+='<h2>Zig Zag</h2>';
+			html_str+='<div class="buttons">';
+				html_str+='<button id="il_zig_zig_auto"class="">Zig Zag Auto</button>';
+				html_str+='<button id="il_zig_zig"class="">Zig Zag</button>';
 			html_str+='</div>';
 			html_str+='<div class="input">';
 				html_str+='<label for="zigzag_speed">Zig Zag Delay</label>';
@@ -137,10 +116,6 @@ function scene_load(name){
 			html_str+='<div class="input">';
 				html_str+='<label for="zigzag_amount">Zig Zag Amount</label>';
 				html_str+='<input id="zigzag_amount" name="zigzag_amount" type="range" min="1" max="5" step="1" value="1" />';
-			html_str+='</div>';
-			html_str+='<div class="buttons">';
-				html_str+='<button id="il_zig_zig_auto"class="">Zig Zag Auto</button>';
-				html_str+='<button id="il_zig_zig"class="">Zig Zag</button>';
 			html_str+='</div>';
 			sett.innerHTML=html_str;
 
@@ -202,16 +177,12 @@ function events(type,create){
 	if(create==null)create=true;
 	if (type=='zigzag'){
 		if(create){
-			event_add(document.getElementById('zigzag_bg'),'input',zigzag_bg);
-			event_add(document.getElementById('zigzag_line'),'input',zigzag_line);
 			event_add(document.getElementById('zigzag_speed'),'input',zigzag_speed);
 			event_add(document.getElementById('zigzag_amount'),'input',zigzag_amount);
 			event_add(document.getElementById('il_zig_zig'),'click',zigzag_button);
 			event_add(document.getElementById('il_zig_zig_auto'),'click',zigzag_auto);
 
 		}else{
-			event_remove(document.getElementById('zigzag_bg'),'input',zigzag_bg);
-			event_remove(document.getElementById('zigzag_line'),'input',zigzag_line);
 			event_remove(document.getElementById('zigzag_speed'),'input',zigzag_speed);
 			event_remove(document.getElementById('zigzag_amount'),'input',zigzag_amount);
 			event_remove(document.getElementById('il_zig_zig'),'click',zigzag_button);

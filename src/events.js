@@ -15,16 +15,64 @@ event_add(window,'load',function(e){
 /* event for sliding out the settings ------------------------------------------------------ */
 event_add(document,'keydown',function(e){
 	if(e.code=='Space'){
-		if(e.shiftKey)class_toggle(document.body,'fullscreen');
-		else class_toggle(document.getElementById('settings'),'closed');
+		if(e.shiftKey){
+
+			var canvas=vp.canvas;
+			if(canvas){
+				var pos=getPosition(canvas);
+				var body=document.body;
+				if(class_exists(body,'fullscreen')){
+					canvas.style.width=vp.size.x+'px';
+					canvas.style.height=vp.size.y+'px';
+					canvas.style.position='relative';
+					canvas.style.transition='left 1s,top 1s,width 1s,height 1s';
+					canvas.style.left=(pos.x)+'px';
+					canvas.style.top=(pos.y)+'px';
+					setTimeout(function(){
+						class_remove(body,'fullscreen');
+						vp.canvas.style.position='relative';
+						vp.canvas.style.transition='left 1s,top 1s,width 1s,height 1s';
+						vp.canvas.style.left='0px';
+						vp.canvas.style.top='0px';
+					},1);
+				}else{
+					canvas.style.width='1%';
+					canvas.style.height='1%';
+					canvas.style.transition='none';
+					canvas.style.left=pos.x+'px';
+					canvas.style.top=pos.y+'px';
+					setTimeout(function(){
+						class_add(body,'fullscreen');
+						canvas.style.position='fixed';
+						vp.canvas.style.left='0px';
+						vp.canvas.style.top='0px';
+	
+						vp.canvas.style.transition='left 1s,top 1s,width 1s,height 1s';
+					},1);
+				}
+			}else{
+
+			}
+
+		}else class_toggle(document.getElementById('settings'),'closed');
 	}
 });
 
 /* ========================================================= Modal Actions and Settings ==== */
 /* event for sliding out the settings ------------------------------------------------------ */
-event_add(document.getElementById('settings_toggle'),'click',function(e){
+event_add(document.getElementById('settings_button'),'click',function(e){
 	var ele=document.getElementById('settings');
 	if(ele)class_toggle(ele,'closed');
+});
+/* event for clearing the Canvas and reseting the zig zag position ------------------------ */
+event_add(document.getElementById('reset_button'),'click',function(e){
+	vp.clear();
+	vp.pos.x=0;
+	vp.pos.y=0;
+	if(settings.scene=='Patty-and-Winston-Jump'){
+		patty_and_winston.stop();
+		patty_and_winston.start();
+	}
 });
 /* event for closing the settings menu ----------------------------------------------------- */
 event_add(document.getElementById('settings_close'),'click',function(e){
@@ -61,15 +109,24 @@ event_add(document.getElementById('settings_color'),'click',function(e){
 		e.srcElement.innerHTML='Theme - Color';
 	}
 });
-/* event for clearing the Canvas and reseting the zig zag position ------------------------ */
-event_add(document.getElementById('il_clear'),'click',function(e){
+
+
+/* ========================================================= Vieport Global Settings ======= */
+/* event for changing the zigzag loop speed ------------------------------------------------ */
+function viewport_bg(e){
+	settings.colors.bg=e.srcElement.value;
+	vp.bg=settings.colors.bg;
 	vp.clear();
-	vp.pos.x=0;
-	vp.pos.y=0;
-	if(settings.scene=='Patty-and-Winston-Jump')
-		patty_and_winston.stop();
-		patty_and_winston.start();
-});
+}
+/* event for changing the zigzag loop speed ------------------------------------------------ */
+function viewport_line(e){
+	settings.colors.line=e.srcElement.value;
+	vp.line=settings.colors.line;	
+}
+event_add(document.getElementById('settings_bg'),'input',viewport_bg);
+event_add(document.getElementById('settings_line'),'input',viewport_line);
+
+
 
 /* ========================================================= Scene Loop ==================== */
 /* scene recurring event ------------------------------------------------------------------- */

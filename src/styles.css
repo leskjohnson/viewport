@@ -1,12 +1,20 @@
 /* ========================================= Header Styles ================ */
 /* header styles -----------------------------------------------------------*/
-#header div#scene_list{margin:0;padding:0;width:50%;float:left;padding-top:5px;padding-bottom:5px;}
+#header div#scene_list{margin:0;padding:0;width:50%;float:left;padding-top:5px;padding-bottom:5px;box-shadow:0 0 10px 3px #383838,0 0 45px #000 inset;}
 #header div.buttons{float:right;margin:0;padding:0;}
 #header .input{background-color:#e2e2e2;}
+#header .buttons button{padding:2px;}
+#header .buttons button span{display:none;}
+@media(max-width:500px){
+    #header #scene_list.input{}
+    #header #scene_list.input label,
+    #header #scene_list.input select{width:100%;text-align:center;}
+    #header #scene_select{min-height:55px;}
+}
 
 /* ========================================= Fullscreen Canvas ============ */
 /* fullscreen canvas styles ------------------------------------------------*/
-#scene canvas{position:relative;top:0;left:0;width:25%;height:25%;max-width:100%;
+#scene canvas{position:relative;top:0%;left:0%;width:25%;height:25%;max-width:100%;
     -webkit-transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
     -moz-transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
     -ms-transition:left 1s,width 1s,height 1s,top 1s,padding 1s;
@@ -20,8 +28,7 @@ body.fullscreen #scene canvas{width:100% !important;height:100% !important;posit
 @media (max-width:767px){
     body .settings{width:100%;}
     body .settings.modal{width:96%;}
-    body .settings.closed{width:100%;left:105%}
-    body .settings .list{overflow-y:scroll;height:100%;}
+    body .settings.closed{width:100%;left:105%}    
 }
 @media (max-width:500px){
     body .buttons button{width:100%;border-radius:15px;margin-bottom:5px;}
@@ -56,20 +63,9 @@ body h1 {
     transition: background 1s;
     line-height: 2rem;
 }
-canvas {
-    box-shadow: 0 0 10px;
-    border-radius: 4px;
-    border: 1px solid #444;
-    background-color: #FFF;
-    display: block;
-    margin: 30px auto 20px;
-}
-.buttons, .settings {
-    text-align: center;
-    padding: 10px;
-    margin: 0;
-    position: relative;
-}
+body h2{color:#FFF;}
+canvas{box-shadow:0 0 10px;border-radius:4px;border:1px solid #444;background-color:#FFF;display:block;margin:30px auto 20px;}
+.buttons,.settings{text-align:center;padding:10px;margin:0;position:relative;}
 
 
 /* =========================================== Button Styles ============== */
@@ -87,7 +83,7 @@ canvas {
 .buttons button.no{background-color:red;float:left;}
 .buttons button.yes{background-color:green;float:right;}
 .buttons button.close{background-color:red;float:right;}
-.buttons button.modal{background-color:orange;float:left;}
+.buttons button.modal{float:left;}
 .buttons button.active {box-shadow:0 0 10px #949494 inset,0 0 40px #059c00 inset;background-color:#1b4419;border:1px solid #000;}
 
 
@@ -116,17 +112,11 @@ canvas {
 .settings.modal{left:2%;bottom:2%;width:96%;height:94%;border-radius:20px;}
 .settings.modal .input{margin:1rem 2%;width:96%;padding:1rem 0;}
 .settings.modal.closed{left:-105%;}
-
+.settings .list{overflow-y:scroll;height:100%;}
+.settings .list h2{text-align:left;padding-left:20px;border-bottom:1px solid #ccc;padding-bottom:10px;}
 /* ============================================ Form Input Styles ========= */
 /*form element styling -----------------------------------------------------*/
-.input {
-    background-color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 5px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px -2px #4c2d80,0 0 45px #000 inset;
-    padding: 0;
-    margin:0;
-    width:100%;
+.input{background-color:rgba(255, 255, 255, 0.5);margin-bottom:5px;border-radius:5px;box-shadow:0 0 10px -2px #4c2d80,0 0 45px #000 inset;padding:0;margin:0;width:100%;
 	-webkit-transition:width 1s,margin 1s,padding 1s;
 	-moz-transition:width 1s,margin 1s,padding 1s;
 	-ms-transition:width 1s,margin 1s,padding 1s;
@@ -151,3 +141,27 @@ body.color{
 body.color h1{background-color: #5767ff;}
 body.color .settings{background-color:rgba(39,0,255,0.95);}
 body.color .settings .input {background-color: rgba(0,183,255,0.9);}
+body.color #header div#scene_list{box-shadow:0 0 10px 3px #39d493,0 0 45px #000 inset;}
+
+
+/* ============================================= Icon Styles ============== */
+/* icon styling ------------------------------------------------------------*/
+.icon div{background-image:url('../img/icons.png');background-size:400% 400%;width:32px;height:32px;display:inline-block;
+    -webkit-transition:background-color 0.15s ease-in-out;
+    -moz-transition:background-color 0.15s ease-in-out;
+    -ms-transition:background-color 0.15s ease-in-out;
+    -o-transition:background-color 0.15s ease-in-out;
+    transition:background-color 0.15s ease-in-out;
+}
+.icon div,.icon span{vertical-align:middle;}
+
+/*gear button icon*/
+.icon div.gear{background-position:0% 0%;}
+button:hover div.gear {background-position:33% 0%;background-color:#96a7de;}
+button:focus div.gear,
+button:active div.gear {background-position:66% 0%;}
+/*reset button icon*/
+.icon div.reset{background-position:0% 33%;}
+button:hover div.reset {background-position:33% 33%;background-color:#e5b798;}
+button:focus div.reset,
+button:active div.reset {background-position:66% 33%;}

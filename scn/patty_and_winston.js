@@ -10,12 +10,25 @@ var patty_and_winston={
 		this.characters_destroy();
 	},
 	'characters_create':function(){
-		this.characters[this.characters.length]=new character('patty',-128,50,1);
-		this.characters[this.characters.length]=new character('winston',-128,100,0.75);
+		var ch=[];
+		ch[ch.length]=new character(
+			'patty',
+			-128,/* x position */
+			50,/* y position */
+			1/* speed */
+		);
+		ch[ch.length]=new character(
+			'winston',
+			-128,/* x position */
+			100,/* y position */
+			0.75/* speed */
+		);
+		this.characters=ch;
 	},
 	'characters_destroy':function(){
 		for(var i=this.characters.length;i>=0;i--)
 			this.characters.splice(i,1);
+		this.characters=null;
 	},
 	'key':function(e){
 		if(e.code=='ArrowUp'){
@@ -30,11 +43,12 @@ var patty_and_winston={
 	},
 	'draw':function(){
 		vp.clear();
-		var ch = this.characters;
+		var ch=this.characters;
+		if(ch==null)return;
 		/* if the viewport (vp) exists */
 		if(vp){
 			/* loop through the characters and draw them in the viewport (vp.ctx) */
-			for (var i = 0; i < ch.length; i++){
+			for (var i=0;i<ch.length;i++){
 
 				/* add the steady force to the character direction */
 				ch[i].dir.x+=this.steady_dir.x;
