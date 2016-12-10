@@ -35,6 +35,7 @@ body.fullscreen #scene canvas{width:100% !important;height:100% !important;posit
     body canvas{max-height:100%;width:80%;}
     body .settings.modal{height:94%;}
 }
+@media (max-width:200px){body h1{clear:both;}}
 
 /* ========================================== General Styles ============== */
 /* general styles ----------------------------------------------------------*/
