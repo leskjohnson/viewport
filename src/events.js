@@ -66,6 +66,9 @@ event_add(document.getElementById('il_clear'),'click',function(e){
 	vp.clear();
 	vp.pos.x=0;
 	vp.pos.y=0;
+	if(settings.scene=='Patty-and-Winston-Jump')
+		patty_and_winston.stop();
+		patty_and_winston.start();
 });
 
 /* ========================================================= Scene Loop ==================== */

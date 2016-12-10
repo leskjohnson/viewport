@@ -1,3 +1,15 @@
+/* ========================================================= Animate Handler =============== */
+/* ----------------------------------------------------------------------------------------- */
+function animate_handler(){
+	if(settings.scene=='Patty-and-Winston-Jump'){
+		patty_and_winston.draw();
+	
+	}else if(settings.scene=='Image-Look'){
+		image_look.draw();
+	}
+
+}
+
 /* ========================================================= Scene Select Dropdown ========= */
 /* ----------------------------------------------------------------------------------------- */
 function scene_select(ele){
@@ -29,16 +41,18 @@ function scene_init(){
 		settings.view='zigzag';
 		settings.dimensions.width=200;
 		settings.dimensions.height=200;
-	}else if(settings.scene=='patty_and_winston'){
-		settings.view='';
+
 	}else if(settings.scene=='Patty-and-Winston-Jump'){
 		settings.view='patty_and_winston';
+		/*settings.dimensions=patty_and_winston.dimensions;*/
+		settings.dimensions.width=patty_and_winston.dimensions.width;
+		settings.dimensions.height=patty_and_winston.dimensions.height ;
+
+	}else if(settings.scene=='Image-Look'){
+		settings.view='image_look';
+
 		settings.dimensions.width=500;
-		settings.dimensions.height=200;
-
-		if(typeof patty_and_winston == 'function')
-			patty_and_winston_start();
-
+		settings.dimensions.height=500;
 	}
 
 	vp.setup(settings.dimensions);
@@ -160,26 +174,21 @@ function scene_load(name){
 		}
 		events(name);
 	
-	/*-----------------------------------------paddy_and_winston example*/
-	}else if(name=='patty_and_winston'){
+	/*-----------------------------------------image look */
+	}else if(name=='Image-Look'){
 		if(view){
-			html_str+='<h2>Patty and Winston</h2>';
+			html_str+='<h1>Image Look</h1>';
 			html_str+='<div class="buttons">';
-				html_str+='<img src="img/patty_forward.png">';
-				html_str+='<img src="img/patty_right.png">';
+				html_str+='<input id="input_image" name="input_image" type="file"/>';
 			html_str+='</div>';
-			html_str+='<div class="buttons">';
-				html_str+='<img src="img/winston_forward.png">';
-				html_str+='<img src="img/winston_right.png">';
-			html_str+='</div>';
-
+			html_str+='<canvas id="viewport"></canvas>';
 			view.innerHTML=html_str;
 		}
 		if(sett){
 			html_str=' ';
 			html_str+='<div class="buttons">';
-				html_str+='<img src="img/winston_forward.png">';
-				html_str+='<img src="img/patty_forward.png">';
+				html_str+='<button id="winston_image"><img src="img/winston_forward.png"></button>';
+				html_str+='<button id="patty_image"><img src="img/patty_forward.png"></button>';
 			html_str+='</div>';
 			sett.innerHTML=html_str;
 		}
@@ -208,66 +217,31 @@ function events(type,create){
 			event_remove(document.getElementById('il_zig_zig'),'click',zigzag_button);
 			event_remove(document.getElementById('il_zig_zig_auto'),'click',zigzag_auto);
 			zigzagloopclear();
-		}		
+		}
+
 	}else if(type=='Patty-and-Winston-Jump'){
 		if(create){
-			event_add(window,'keydown',patty_and_winston_key);
+			event_add(window,'keydown',patty_and_winston.key);
+			patty_and_winston.start();
 		}else{
-			event_remove(window,'keydown',patty_and_winston_key);
-			characters_destroy();
+			event_remove(window,'keydown',patty_and_winston.key);
+			patty_and_winston.characters_destroy();
+		}
+
+	}else if(type=='Image-Look'){
+		if(create){
+			event_add(window,'keydown',image_look.key);
+			event_add(document.getElementById('winston_image'),'click',image_look.winston);
+			event_add(document.getElementById('patty_image'),'click',image_look.patty);
+			event_add(document.getElementById('input_image'),'change',image_look.input);
+
+			image_look.start();
+		}else{
+			event_remove(window,'keydown',image_look.key);
+			event_remove(document.getElementById('winston_image'),'click',image_look.winston);
+			event_remove(document.getElementById('patty_image'),'click',image_look.patty);
+			event_remove(document.getElementById('input_image'),'change',image_look.input);
+			// image_look.stop();
 		}
 	}
-}
-
-/* ========================================================= Zig Zag Loop ================== */
-/* zig zag function for creating a recurring event ----------------------------------------- */
-function zigzagloop() {
-    vp.loop=window.setTimeout(function(){
-		vp.zigzag(
-			settings.zigzag.size,
-			settings.zigzag.loop
-		);
-        zigzagloop(settings.zigzag.delay);
-    }, settings.zigzag.delay);
-}
-/* zig zag function for destroy a recurring event ------------------------------------------- */
-function zigzagloopclear(){
-	window.clearTimeout(vp.loop);
-	vp.loop=null;
-}
-/* ========================================================= Zig Zag Functions ============= */
-/* event for changing the zigzag loop speed ------------------------------------------------ */
-function zigzag_bg(e){
-	settings.colors.bg=e.srcElement.value;
-	vp.bg=settings.colors.bg;
-	vp.clear();
-}
-/* event for changing the zigzag loop speed ------------------------------------------------ */
-function zigzag_line(e){
-	settings.colors.line=e.srcElement.value;
-	vp.line=settings.colors.line;	
-}
-/* event for changing the zigzag loop speed ------------------------------------------------ */
-function zigzag_speed(e){
-	settings.zigzag.delay=e.srcElement.value;
-}
-/* event for changing the zigzag loop speed ------------------------------------------------ */
-function zigzag_amount(e){
-	settings.zigzag.loop=e.srcElement.value;;
-}
-/* event for when the Zig Zag button is clicked -------------------------------------------- */
-function zigzag_button(e){
-	preventEvent(e);
-	vp.zigzag(settings.zigzag.size,settings.zigzag.loop);	
-}
-/* event for when the Zig Zag Auto button is clicked ---------------------------------------- */
-function zigzag_auto(e){
-	preventEvent(e);	
-	if(vp.loop==null){/* if the imagelook loop isn't set */
-		zigzagloop();/* start the zig zag loop */
-		class_add(this,'active');/* make the Zig Zag Auto button active */
-	}else{
-		zigzagloopclear();/* stop the zig zag loop */
-		class_remove(this,'active');/* make the Zig Zag Auto button inactive */
-	}	
 }

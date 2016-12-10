@@ -14,7 +14,8 @@
 			/*create the list of scenes to switch between*/
 			scene_list=[
 				'zigzag',
-				'Patty-and-Winston-Jump'
+				'Patty-and-Winston-Jump',
+				'Image-Look'
 			],
 			settings={
 				'scene':'zigzag', /*the scene to start with*/
@@ -33,10 +34,6 @@
 					'delay':125, /*how much time between zig zag draws*/
 					'size':10, /*the size of the zig zag*/
 					'loop':1 /*how many zigzags to draw at a time*/
-				},
-				'patty_and_winston':{
-					'patty':0,
-					'winston':0
 				}
 			};
 		
@@ -50,39 +47,37 @@
 <!-- Body _________________________________________________ -->
 	<body>
 
+		<!-- header -->
+		<div id="header">
+			<!-- scenes for the scene -->
+			<div id="scene_list" class="input"></div>
+	
+			<!-- action buttons -->
+			<div class="buttons">
+				<!-- open settings menu -->
+				<button id="settings_toggle"class="toggle">Settings</button>
+				<!-- clear canvas and reset the stroke start position -->
+				<button id="il_clear"class="">Clear</button>
+			</div>
+		</div>
+
 		<!-- example container -->
 		<div id="scene"></div>
 
-		<!-- current example buttons -->
-		<div class="buttons">
-			<!-- open settings menu -->
-			<button id="settings_toggle"class="toggle">Settings</button>
-			<!-- clear canvas and reset the stroke start position -->
-			<button id="il_clear"class="">Clear</button>
-		</div>
-
 		<!-- settings form -->
 		<form id="settings" class="settings closed">
-
 			<!-- list of form elements for adding scrolling -->
 			<div class="list">
-
-				<!-- settings for the example -->
-				<div id="scene_list" class="input"></div>
-
 				<!-- settings for the example -->
 				<div id="scene_settings"></div>
-
 				<!-- setting action buttons -->
 				<div class="buttons">
 					<button id="settings_close" class="close">Close</button>
 					<button id="settings_color">Theme - B&amp;W</button>
 					<button id="settings_modal" class="modal">Fullscreen</button>
 				</div>
-
 			<!-- closing #settings .list -->
 			</div>
-
 		<!-- closing form#settings -->
 		</form>
 
@@ -90,20 +85,28 @@
 	</body>
 
 <!-- JavaScript ___________________________________________ -->
-	
 
 	<!-- these are functions for binding events and changing class names on elements -->
 	<script type="text/javascript" src="src/functions.js"></script>
 	<!-- these are the events bound to the html elements -->
 	<script type="text/javascript" src="src/events.js"></script>
+
 	<!-- this is the image_look prototype -->
 	<script type="text/javascript" src="src/viewport.js"></script>
+	<!-- this is the character prototype -->
+	<script type="text/javascript" src="src/character.js"></script>
 	<!-- this is what loads the html of the scenes -->
 	<script type="text/javascript" src="src/scenes.js"></script>
 
+	<!-- framerate calculation -->
 	<script type="text/javascript" src="src/requestNextAnimationFrame.js"></script>
+
 	<!-- patty and winston - insercorp game -->
-	<script type="text/javascript" src="src/patty_and_winston.js"></script>
+	<script type="text/javascript" src="scn/zigzag.js"></script>
+	<!-- patty and winston - insercorp game -->
+	<script type="text/javascript" src="scn/patty_and_winston.js"></script>
+	<!-- patty and winston - insercorp game -->
+	<script type="text/javascript" src="scn/image_look.js"></script>
 
 <!-- CSS __________________________________________________ -->
 	<!-- the styles to make all the elements work and look aesthetically pleasing -->
