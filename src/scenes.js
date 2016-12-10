@@ -1,3 +1,12 @@
+/* ========================================================= Animate Handler =============== */
+/* ----------------------------------------------------------------------------------------- */
+function animate_handler(){
+	if(settings.scene=='Patty-and-Winston-Jump'){
+		patty_and_winston.draw();
+	}
+
+}
+
 /* ========================================================= Scene Select Dropdown ========= */
 /* ----------------------------------------------------------------------------------------- */
 function scene_select(ele){
@@ -210,9 +219,8 @@ function events(type,create){
 			zigzagloopclear();
 		}		
 	}else if(type=='Patty-and-Winston-Jump'){
-		if(!create){
-			players_destroy();
-		}
+		if(create)patty_and_winston.start();
+		else patty_and_winston.players_destroy();
 	}
 }
 

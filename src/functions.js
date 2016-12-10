@@ -19,3 +19,18 @@ function class_add(ele,className){if(!class_exists(ele,className))ele.className+
 function class_remove(ele,className){var newClass=' '+ele.className.replace(/[\t\r\n]/g,' ')+' ';if(class_exists(ele,className)){while (newClass.indexOf(' '+className+' ')>=0) newClass=newClass.replace(' '+className+' ',' ');ele.className=newClass.replace(/^\s+|\s+$/g,' ');}};
 function class_toggle(ele,className){var newClass=' '+ele.className.replace(/[\t\r\n]/g,' ')+' ';if(class_exists(ele,className)){while (newClass.indexOf(' '+className+' ')>=0) newClass=newClass.replace(' '+className+' ',' ');ele.className=newClass.replace(/^\s+|\s+$/g,' ');}else ele.className+=' '+className;};
 function preventEvent(e){if(e.preventDefault) e.preventDefault();else e.returnValue=false;}
+
+/* calculateFps adapted from Core HTML5 Canvas
+ * David Geary (www.corehtmlcanvas.com) */
+function calculateFps(now) {
+   	var cur_fps = 1000 / (now - vp.fps.frame);
+   	vp.fps.frame = now;
+   	if (now - vp.fps.update > 1000)
+   		vp.fps.update = now; 
+   	return cur_fps; 
+}
+function animate(now){
+	calculateFps(now);
+	requestNextAnimationFrame(animate);
+	if(typeof animate_handler=='function')animate_handler();
+}

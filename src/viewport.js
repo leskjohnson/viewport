@@ -51,3 +51,15 @@ viewport.prototype.zigzag = function(length,amt){
 		this.draw(length,-length);
 	}
 }
+
+function character(character,x,y,speed) {
+	if(!x)x=0;if(!y)y=0;if(!speed)speed=1;
+  	this.base_image=new Image();
+  	this.base_image.src='img/'+character+'_right.png';
+  	this.pos={'x':x,'y':y};
+  	this.dir={'x':0,'y':0};
+  	this.speed=speed;
+}
+character.prototype.draw=function(vp){
+	vp.ctx.drawImage(this.base_image, 0, 0);
+}
