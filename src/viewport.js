@@ -47,10 +47,14 @@ viewport.prototype.clear=function(){
 	this.ctx.fillStyle = this.bg;
 	this.ctx.fillRect(0,0,this.ctx.canvas.width,this.ctx.canvas.height);
 }
-
 viewport.prototype.zigzag = function(length,amt){
 	for(var i=0;i<amt;i++){
 		this.draw(length,length);
 		this.draw(length,-length);
 	}
+}
+viewport.prototype.bg_update = function(e){
+	settings.colors.bg=e.srcElement.value;
+	this.bg=settings.colors.bg;
+	vp.clear();
 }

@@ -69,10 +69,7 @@ event_add(document.getElementById('reset_button'),'click',function(e){
 	vp.clear();
 	vp.pos.x=0;
 	vp.pos.y=0;
-	if(settings.scene=='Patty-and-Winston-Jump'){
-		patty_and_winston.stop();
-		patty_and_winston.start();
-	}
+	if(typeof settings.obj.reset=='function')settings.obj.reset();
 });
 /* event for closing the settings menu ----------------------------------------------------- */
 event_add(document.getElementById('settings_close'),'click',function(e){
@@ -125,22 +122,3 @@ function viewport_line(e){
 }
 event_add(document.getElementById('settings_bg'),'input',viewport_bg);
 event_add(document.getElementById('settings_line'),'input',viewport_line);
-
-
-
-/* ========================================================= Scene Loop ==================== */
-/* scene recurring event ------------------------------------------------------------------- */
-/*function sceneloop() {
-    vp.loop=window.setTimeout(function(){
-		vp.zigzag(
-			settings.zigzag.size,
-			settings.zigzag.loop
-		);
-        zigzagloop(settings.zigzag.delay);
-    }, settings.zigzag.delay);
-}*/
-/* destroy sceneloop ------------------------------------------------------------------------ */
-/*function sceneloopclear(){
-	window.clearTimeout(vp.loop);
-	vp.loop=null;
-}*/

@@ -6,21 +6,28 @@
 		<!-- webpage title browser displays this  -->
 		<title>Viewport</title>
 		
+		<!-- scene objects -->
+		<script type="text/javascript" src="scn/zigzag.js"></script>
+		<script type="text/javascript" src="scn/patty_and_winston.js"></script>
+		<script type="text/javascript" src="scn/image_look.js"></script>
+
 		<!-- settings for the image_look functions -->
 		<script type="text/javascript">
 
 			/*create the variable for the canvas handler 'viewport'*/
 			var vp=null,
 			/*create the list of scenes to switch between*/
-			scene_list=[
-				'zigzag',
-				'Patty-and-Winston-Jump',
-				'Image-Look'
-			],
+			scene_list={
+				'zigzag':zigzag,
+				'Patty-and-Winston':patty_and_winston,
+				'Image-Look':image_look
+			},
+
 			settings={
 				'scene':'zigzag', /*the scene to start with*/
-				'view':'zigzag', /*what to fill the 'vp' with*/
+				'view':'zigzag', /*what to fill the viewport with*/
 				'canvas':'viewport', /*id of the canvas element*/
+				'obj':null, /*the scene object to run*/
 				'dimensions':{ /*the canvas width and height*/
 					'width':200,
 					'height':200
@@ -28,12 +35,6 @@
 				'colors':{ /*background and line color*/
 					'bg':'white',
 					'line':'black',
-				},
-				'zigzag':{ /* zig zag loop drawing zigzags over time */
-					'autostart':true,/*start automatic zig zag on load*/
-					'delay':125, /*how much time between zig zag draws*/
-					'size':10, /*the size of the zig zag*/
-					'loop':1 /*how many zigzags to draw at a time*/
 				}
 			};
 		
@@ -135,13 +136,6 @@
 
 	<!-- framerate calculation -->
 	<script type="text/javascript" src="src/requestNextAnimationFrame.js"></script>
-
-	<!-- patty and winston - insercorp game -->
-	<script type="text/javascript" src="scn/zigzag.js"></script>
-	<!-- patty and winston - insercorp game -->
-	<script type="text/javascript" src="scn/patty_and_winston.js"></script>
-	<!-- patty and winston - insercorp game -->
-	<script type="text/javascript" src="scn/image_look.js"></script>
 
 <!-- CSS __________________________________________________ -->
 	<!-- the styles to make all the elements work and look aesthetically pleasing -->

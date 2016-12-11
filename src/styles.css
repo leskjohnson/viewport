@@ -3,7 +3,7 @@
 #header div#scene_list{margin:0;padding:0;width:50%;float:left;padding-top:5px;padding-bottom:5px;box-shadow:0 0 10px 3px #383838,0 0 45px #000 inset;}
 #header div.buttons{float:right;margin:0;padding:0;}
 #header .input{background-color:#e2e2e2;}
-#header .buttons button{padding:2px;}
+#header .buttons button{padding:2px;border-radius:100%;}
 #header .buttons button span{display:none;}
 @media(max-width:500px){
     #header #scene_list.input{}
@@ -80,7 +80,7 @@ canvas{box-shadow:0 0 10px;border-radius:4px;border:1px solid #444;background-co
     cursor:pointer;
     outline:none;
 }
-.buttons button:focus{box-shadow:0 0 30px #8c8c8c inset;background-color:#444444;}
+.buttons button:focus{box-shadow:0 0 40px 6px #FFFFFC inset;background-color:#444444;}
 .buttons button.no{background-color:red;float:left;}
 .buttons button.yes{background-color:green;float:right;}
 .buttons button.close{background-color:red;float:right;}
@@ -158,11 +158,11 @@ body.color #header div#scene_list{box-shadow:0 0 10px 3px #39d493,0 0 45px #000 
 
 /*gear button icon*/
 .icon div.gear{background-position:0% 0%;}
-button:hover div.gear {background-position:33% 0%;background-color:#96a7de;}
+button:hover div.gear {background-position:33% 0%;}
 button:focus div.gear,
-button:active div.gear {background-position:66% 0%;}
+button:active div.gear {background-position:67% 0%;}
 /*reset button icon*/
 .icon div.reset{background-position:0% 33%;}
-button:hover div.reset {background-position:33% 33%;background-color:#e5b798;}
+button:hover div.reset {background-position:33% 33%;}
 button:focus div.reset,
-button:active div.reset {background-position:66% 33%;}
+button:active div.reset {background-position:67% 33%;}
