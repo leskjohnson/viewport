@@ -12,8 +12,8 @@ var patty_and_winston={
 	'background':new Image(),
 	'setup':function(){
 		settings.view='patty_and_winston';
-		settings.dimensions.width=this.dimensions.width;
-		settings.dimensions.height=this.dimensions.height ;
+		settings.dimensions.width=patty_and_winston.dimensions.width;
+		settings.dimensions.height=patty_and_winston.dimensions.height ;
 		this.background.src='img/grass.jpg';
 	},
 	/* after viewport is setup */
@@ -85,7 +85,7 @@ var patty_and_winston={
 	},
 	/* draw loop */
 	'draw':function(){
-
+		console.log('drawing');
 		/* make the characters array easier to type */
 		var ch=this.characters;
 
@@ -181,7 +181,7 @@ var patty_and_winston={
 	},
 	/* these are the settings for patty and winston */
 	'sett':function(){
-		var html_str='';
+		var html_str='A little something.';
 		return html_str;
 	},
 	/* these are the events for patty and winston */
