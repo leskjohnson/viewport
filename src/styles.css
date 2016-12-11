@@ -79,6 +79,12 @@ canvas{box-shadow:0 0 10px;border-radius:4px;border:1px solid #444;background-co
     text-shadow:0 0 10px #000;
     cursor:pointer;
     outline:none;
+    border-radius:0%;
+    -webkit-transition:border-radius 1s;
+    -moz-transition:border-radius 1s;
+    -ms-transition:border-radius 1s;
+    -o-transition:border-radius 1s;
+    transition:border-radius 1s;
 }
 .buttons button:focus{box-shadow:0 0 40px 6px #FFFFFC inset;background-color:#444444;}
 .buttons button.no{background-color:red;float:left;}
@@ -115,6 +121,7 @@ canvas{box-shadow:0 0 10px;border-radius:4px;border:1px solid #444;background-co
 .settings.modal.closed{left:-105%;}
 .settings .list{overflow-y:scroll;height:100%;}
 .settings .list h2{text-align:left;padding-left:20px;border-bottom:1px solid #ccc;padding-bottom:10px;}
+
 /* ============================================ Form Input Styles ========= */
 /*form element styling -----------------------------------------------------*/
 .input{background-color:rgba(255, 255, 255, 0.5);margin-bottom:5px;border-radius:5px;box-shadow:0 0 10px -2px #4c2d80,0 0 45px #000 inset;padding:0;margin:0;width:100%;
@@ -142,8 +149,8 @@ body.color{
 body.color h1{background-color: #5767ff;}
 body.color .settings{background-color:rgba(39,0,255,0.95);}
 body.color .settings .input {background-color: rgba(0,183,255,0.9);}
+body.color .buttons button{border-radius:100%;}
 body.color #header div#scene_list{box-shadow:0 0 10px 3px #39d493,0 0 45px #000 inset;}
-
 
 /* ============================================= Icon Styles ============== */
 /* icon styling ------------------------------------------------------------*/
