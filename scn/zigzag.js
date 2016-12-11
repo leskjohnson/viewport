@@ -113,14 +113,14 @@ var zigzag={
 	},
 	'events':function(create){
 		if(create){
-			event_add(document.getElementById('zigzag_speed'),'input',zigzag.speed);
-			event_add(document.getElementById('zigzag_amount'),'input',zigzag.amount);
+			event_add(document.getElementById('zigzag_speed'),'change',zigzag.speed);
+			event_add(document.getElementById('zigzag_amount'),'change',zigzag.amount);
 			event_add(document.getElementById('zigzag_vp'),'click',zigzag.button);
 			event_add(document.getElementById('zigzag_auto'),'click',zigzag.auto);
 
 		}else{
-			event_remove(document.getElementById('zigzag_speed'),'input',zigzag.speed);
-			event_remove(document.getElementById('zigzag_amount'),'input',zigzag.amount);
+			event_remove(document.getElementById('zigzag_speed'),'change',zigzag.speed);
+			event_remove(document.getElementById('zigzag_amount'),'change',zigzag.amount);
 			event_remove(document.getElementById('zigzag_vp'),'click',zigzag.button);
 			event_remove(document.getElementById('zigzag_auto'),'click',zigzag.auto);
 		}

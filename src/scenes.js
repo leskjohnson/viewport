@@ -87,5 +87,5 @@ function scene_select(ele){
 	ele.innerHTML=html_str;
 	/* wait for dom refresh to add an input event on the select element */
 	setTimeout(function(){
-		event_add(document.getElementById('scene_select'),'input',scene_change);},1);
+		event_add(document.getElementById('scene_select'),'change',scene_change);},1);
 }

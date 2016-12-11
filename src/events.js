@@ -120,5 +120,5 @@ function viewport_line(e){
 	settings.colors.line=e.srcElement.value;
 	vp.line=settings.colors.line;	
 }
-event_add(document.getElementById('settings_bg'),'input',viewport_bg);
-event_add(document.getElementById('settings_line'),'input',viewport_line);
+event_add(document.getElementById('settings_bg'),'change',viewport_bg);
+event_add(document.getElementById('settings_line'),'change',viewport_line);
