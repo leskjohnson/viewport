@@ -6,20 +6,13 @@ function scene_load(name){
 	view=document.getElementById('scene');
 	sett=document.getElementById('scene_settings');
 
+	/*set the obj for the scene to run*/
 	settings.obj=scene_list[name];
-	// /*-----------------------------------------Zig Zag Scene */
-	// if(name=='zigzag'){
-	// /*-----------------------------------------Patty and Winston Scene */
-	// }else if(name=='Patty-and-Winston'){
-	// 	settings.obj=patty_and_winston;	
-	// /*-----------------------------------------Image Look Scene */
-	// }else if(name=='Image-Look'){
-	// 	settings.obj=image_look;
-	// }
 
-	/*this gets the html and settings from the settings object*/
+	/*this gets the html and settings from the scene object*/
 	if(view)view.innerHTML=settings.obj.html();
 	if(sett)sett.innerHTML=settings.obj.sett();
+
 	/* this sets up the events for the html */
 	events(name);
 }
