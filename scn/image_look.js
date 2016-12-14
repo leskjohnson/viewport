@@ -1,5 +1,7 @@
 var image_look={
 	'image':new Image(),
+	'tiles':[],
+	'tile_data':{'wm':3,'hm':3,'w':0,'h':0,'c':0},
 	'canvas_img':null,
 	'dimensions':{'width':500,'height':500},
 	'setup':function(){
@@ -16,16 +18,73 @@ var image_look={
 	'stop':function(){
 		this.events(false);
 	},
+	'map':function(type){
+		if(type=='create'){
+			vp.clear();
+			vp.ctx.drawImage(this.image,0,0,vp.ctx.canvas.width,vp.ctx.canvas.height);
+
+			setTimeout(function(){
+				// image_look.map('create');
+				image_look.tiles=[];
+				var td=image_look.tile_data;
+				td.w=image_look.dimensions.width/td.wm;
+				td.h=image_look.dimensions.height/td.hm;
+				td.c=td.wm*td.hm;
+				for(var i=0;i<image_look.tile_data.wm;i++){
+					for(var j=0;j<image_look.tile_data.hm;j++){
+						var img_data=vp.ctx.getImageData(
+							i*td.w,
+							j*td.h,
+							(i*td.w)+td.w,
+							(j*td.h)+td.h
+						);
+						image_look.tiles[image_look.tiles.length]=img_data;
+					}
+				}
+			},1);
+
+		}
+
+	},
 	'draw':function(){
-		vp.clear();
-		vp.ctx.drawImage(this.image,0,0,vp.ctx.canvas.width,vp.ctx.canvas.height);
+		if (this.tiles.length>0){
+			var c=0;
+			vp.clear();
+			var scale={'x':0.5,'y':1};
+			for(var i=0;i<this.tile_data.wm;i++){
+				for(var j=0;j<this.tile_data.hm;j++){
+
+					vp.ctx.putImageData(
+						this.tiles[c],
+						i*this.tile_data.w,
+						j*this.tile_data.h
+					);
+
+					/*Red rectangle to show where the image has been divided*/
+					vp.ctx.beginPath();
+					vp.ctx.lineWidth="8";
+					vp.ctx.strokeStyle="red";
+					vp.ctx.rect(
+						i*this.tile_data.w-3,
+						j*this.tile_data.h-3,
+						i*this.tile_data.w+this.tile_data.w,
+						j*this.tile_data.h+this.tile_data.h
+					); 
+					vp.ctx.stroke();
+					c++;
+				}
+			}
+			console.log('drew '+c+' pixels');
+		}
 	},
 	'key':function(){
 		console.log('image_look-key');
 	},
 	'image_loaded':function(){
-		image_look.image.src=image_look.canvas_img.result;
 		vp.clear();
+		image_look.image.src=image_look.canvas_img.result;
+		image_look.map('create');
+
 	},
 	'input':function(){
 		var input=document.getElementById('input_image'),
@@ -34,16 +93,19 @@ var image_look={
 		fr.onload=image_look.image_loaded;   // onload fires after reading is complete
 		fr.readAsDataURL(file);    // begin reading
 		image_look.canvas_img=fr;
+
 	},
 	'winston':function(e){
 		preventEvent(e);
 		vp.clear();
   		image_look.image.src='img/winston_forward.png';
+		image_look.map('create');
 	},
 	'patty':function(e){
 		preventEvent(e);
 		vp.clear();
   		image_look.image.src='img/patty_forward.png';
+		image_look.map('create');
 	},
 	'html':function(){
 		var html_str='';
