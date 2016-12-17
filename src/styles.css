@@ -138,7 +138,7 @@ canvas{box-shadow:0 0 10px;border-radius:4px;border:1px solid #444;background-co
 
 /* ============================================ Form Input Styles ========= */
 /*form element styling -----------------------------------------------------*/
-.input{background-color:rgba(255, 255, 255, 0.5);margin-bottom:5px;border-radius:5px;box-shadow:0 0 10px -2px #4c2d80,0 0 45px #000 inset;padding:0;margin:0;width:100%;
+.input{color:#FFF;background-color:rgba(255, 255, 255, 0.5);margin-bottom:5px;border-radius:5px;box-shadow:0 0 10px -2px #4c2d80,0 0 45px #000 inset;padding:0;margin:0;width:100%;
 	-webkit-transition:width 1s,margin 1s,padding 1s;
 	-moz-transition:width 1s,margin 1s,padding 1s;
 	-ms-transition:width 1s,margin 1s,padding 1s;
