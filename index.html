@@ -8,8 +8,8 @@
 		<title>Viewport</title>
 		
 		<!-- scene objects -->
-		<script type="text/javascript" src="scn/zigzag.js"></script>
 		<script type="text/javascript" src="scn/patty_and_winston.js"></script>
+		<!-- <script type="text/javascript" src="scn/zigzag.js"></script> -->
 		<!-- <script type="text/javascript" src="scn/image_look.js"></script> -->
 
 		<!-- settings for the image_look functions -->
@@ -20,13 +20,13 @@
 
 			/*create the list of scenes to switch between*/
 			scene_list={/*these are the objects in the script links above*/
-				'zigzag':zigzag,
 				'Patty-and-Winston':patty_and_winston
+				// 'zigzag':zigzag
 				/*'Image-Look':image_look*/
 			},
 
 			settings={
-				'scene':'zigzag', /*the scene to start with*/
+				'scene':'Patty-and-Winston', /*the scene to start with*/
 				'view':'', /*what to fill the viewport with*/
 				'canvas':'viewport', /*id of the canvas element*/
 				'obj':null, /*the scene object to run*/
@@ -37,7 +37,8 @@
 				'colors':{ /*background and line color*/
 					'bg':'white',
 					'line':'black',
-				}
+				},
+				'header':false
 			};
 		
 		</script>

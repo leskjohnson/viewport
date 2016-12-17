@@ -71,6 +71,7 @@ canvas{box-shadow:0 0 10px;border-radius:4px;border:1px solid #444;background-co
 .buttons,.settings{text-align:center;padding:10px;margin:0;position:relative;}
 .row .col{display:inline-block;width:20%;}
 .row .col.w50{padding:0 1%;width:48%;}
+.hide{display:none!important;}
 /* =========================================== Button Styles ============== */
 /*button element styling ---------------------------------------------------*/
 .buttons button {

@@ -5,7 +5,12 @@ event_add(window,'load',function(e){
 	var ele=document.getElementById('scene_list');
 	/*fill the scene_list with a select dropdown of the scenes */
 	if(ele)scene_select(ele);
-	console.log(ele);
+	/* show or hide the header */
+	console.log(settings.header);
+	if(settings.header===false){	
+		ele=document.getElementById('header');
+		class_add(ele,'hide');
+	}
 	/*load in the html and events*/
 	scene_load(settings.scene);
 	scene_init();
