@@ -9,8 +9,8 @@
 		
 		<!-- scene objects -->
 		<script type="text/javascript" src="scn/zigzag.js"></script>
-		<!-- <script type="text/javascript" src="scn/patty_and_winston.js"></script> -->
-		<script type="text/javascript" src="scn/image_look.js"></script>
+		<script type="text/javascript" src="scn/patty_and_winston.js"></script>
+		<!-- <script type="text/javascript" src="scn/image_look.js"></script> -->
 
 		<!-- settings for the image_look functions -->
 		<script type="text/javascript">
@@ -21,13 +21,13 @@
 			/*create the list of scenes to switch between*/
 			scene_list={/*these are the objects in the script links above*/
 				'zigzag':zigzag,
-				/*'Patty-and-Winston':patty_and_winston,*/
-				'Image-Look':image_look
+				'Patty-and-Winston':patty_and_winston
+				/*'Image-Look':image_look*/
 			},
 
 			settings={
 				'scene':'zigzag', /*the scene to start with*/
-				'view':'zigzag', /*what to fill the viewport with*/
+				'view':'', /*what to fill the viewport with*/
 				'canvas':'viewport', /*id of the canvas element*/
 				'obj':null, /*the scene object to run*/
 				'dimensions':{ /*the canvas width and height*/

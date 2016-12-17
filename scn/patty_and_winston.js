@@ -188,6 +188,7 @@ var patty_and_winston={
 	},
 	/* this is the html for patty and winston */
 	'html':function(){
+		console.log('html was hit');
 		var html_str='';
 		html_str+='<h1><img src="img/winston_and_patty_logo.png" alt="Patty and Winston" title="Patty and Winston" /></h1>';
 		html_str+='<canvas id="viewport"></canvas>';
