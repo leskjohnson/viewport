@@ -4,7 +4,17 @@ var template_scene={
 	'start':function(){},
 	'stop':function(){},
 	'draw':function(){},
-	'html':function(){},
-	'sett':function(){},
-	'events':function(){},
+	'html':function(){
+		var html_str='';
+		return html_str;
+	},
+	'sett':function(){
+		var html_str='';
+		return html_str;
+	},
+	'events':function(create){
+		if(create){
+		}else{
+		}
+	},
 };
