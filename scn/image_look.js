@@ -12,6 +12,7 @@ var image_look={
 	'init':function(){},
 	'start':function(){
   		image_look.image.src='img/winston_forward.png';
+  		image_look.image.onload=function(){image_look.map('create');};
 		window.requestNextAnimationFrame(animate);
 		this.events(true);
 	},
